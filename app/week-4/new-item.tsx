@@ -36,10 +36,14 @@ export function NewItem() {
     setName("");
     setQuantity(1);
     setCategory("produce");
+    setNameTouched(false);
   };
 
   return (
-    <form onSubmit={handleSubmit} className="flex flex-col gap-4 m-4 p-6 w-80 bg-white rounded-lg shadow">
+    <form
+      onSubmit={handleSubmit}
+      className="flex flex-col gap-4 m-4 p-5 w-80 bg-white rounded-lg shadow"
+    >
       <label>
         Name:
         <input
@@ -49,14 +53,14 @@ export function NewItem() {
           onChange={(e) => setName(e.target.value)}
           required
           onBlur={() => setNameTouched(true)}
-          className={`border p-2 rounded ${
+          className={`border mx-1 px-3 py-2 rounded ${
             nameTouched && name.length == 0
               ? "border-red-500"
               : "border-gray-300"
           }`}
         />
         {nameTouched && name === "" && (
-          <p className="text-red-500 text-sm">Name is required.</p>
+          <p className="text-red-500 text-sm m-1">Name is required.</p>
         )}
       </label>
 
@@ -70,13 +74,17 @@ export function NewItem() {
           value={quantity}
           onChange={(e) => setQuantity(Number(e.target.value))}
           required
-          className="border p-2 rounded"
+          className="border mx-1 px-3 py-2 rounded border-gray-300"
         />
       </label>
 
       <label>
         Category:
-        <select value={category} onChange={(e) => setCategory(e.target.value)}>
+        <select
+          value={category}
+          onChange={(e) => setCategory(e.target.value)}
+          className="border mx-1 px-3 py-2 rounded border-gray-300"
+        >
           <option value="produce">Produce</option>
           <option value="dairy">Dairy</option>
           <option value="bakery">Bakery</option>
@@ -91,11 +99,13 @@ export function NewItem() {
         </select>
       </label>
 
-      <div>
+      <div className="flex justify-center">
         <button
           onClick={handleSubmit}
           disabled={!name || quantity < 1}
-          className="bg-blue-500 text-white p-2 rounded disabled:bg-gray-400 disabled:cursor-not-allowed"
+          className="bg-blue-500 text-white p-2 rounded
+            hover:bg-blue-600
+            disabled:bg-gray-400 disabled:cursor-not-allowed"
         >
           Submit
         </button>
