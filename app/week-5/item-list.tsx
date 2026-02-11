@@ -35,12 +35,13 @@ export function ItemList() {
   );
 
   // Sort categories and items in groupedItems list
-  const sortedGroupedItems = Object.entries(groupedItems)
-    .sort(([a], [b]) => a.localeCompare(b))
-    .map(([category, items]) => [
-      category,
-      [...items].sort((a, b) => a.name.localeCompare(b.name)),
-    ]);
+  const sortedGroupedItems: { category: string; items: ItemProps[] }[] =
+    Object.entries(groupedItems)
+      .sort(([a], [b]) => a.localeCompare(b)) // sort categories
+      .map(([category, items]) => ({
+        category,
+        items: [...items].sort((a, b) => a.name.localeCompare(b.name)),
+      }));
 
   return (
     <div>
@@ -93,7 +94,7 @@ export function ItemList() {
 
           {/* Group by category */}
           {sortBy === "group" &&
-            sortedGroupedItems.map(([category, items]) => (
+            sortedGroupedItems.map(({ category, items }) => (
               <li
                 key={category}
                 className="p-2 mx-30 my-1 border rounded bg-green-100"
