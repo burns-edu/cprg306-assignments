@@ -96,7 +96,7 @@ export function ItemList({items}) {
             sortedGroupedItems.map(({ category, items }) => (
               <li
                 key={category}
-                className="p-2 mx-30 my-1 border rounded bg-green-100"
+                className="p-2 mx-10 my-1 border rounded bg-green-100"
               >
                 <h2 className="font-bold capitalize">{category}</h2>
 

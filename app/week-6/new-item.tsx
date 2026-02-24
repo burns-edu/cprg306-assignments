@@ -31,7 +31,6 @@ export function NewItem({onAddItem}) {
 
     // Display alert
     onAddItem(item)
-    //alert(`Name: ${name}\nQuantity: ${quantity}\nCategory: ${category}`);
 
     // Reset variables
     setName("");
@@ -43,8 +42,11 @@ export function NewItem({onAddItem}) {
   return (
     <form
       onSubmit={handleSubmit}
-      className="flex flex-col gap-4 m-4 p-5 w-80 bg-white rounded-lg shadow"
+      className="flex flex-col gap-4 m-4 p-5 w-80 h-80 bg-amber-100 rounded-lg shadow"
     >
+      <h2 className="text-lg font-bold text-center">
+        Add New Item
+      </h2>
       <label>
         Name:
         <input
