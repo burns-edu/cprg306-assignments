@@ -47,15 +47,26 @@ export default function MealIdeas({ ingredient }: MealIdeasProps) {
 
   // Render
   return (
-    <div className="py-3 max-w-100">
+    <div className="py-3 max-w-100 min-w-50">
       <h2 className="text-lg font-bold text-center">Meals</h2>
-
-      {meals.map((meal) => (
-        <div key={meal.idMeal} className="flex flex-col items-center gap-2 mx-4 my-1 border rounded bg-green-100">
-          <p className="font-bold">{meal.strMeal}</p>
-          <img src={meal.strMealThumb} width="150" />
+      {!ingredient ? (
+        <p className="text-center">Select an item to find meals</p>
+      ) : meals.length === 0 ? (
+        <p className="text-center">No meals found for "{ingredient}".</p>
+      ) : (
+        <div>
+          <p className="text-center">Meals found for "{ingredient}".</p>
+          {meals.map((meal) => (
+            <div
+              key={meal.idMeal}
+              className="flex flex-col items-center gap-2 mx-4 my-1 border rounded bg-green-100"
+            >
+              <p className="font-bold">{meal.strMeal}</p>
+              <img src={meal.strMealThumb} width="150" />
+            </div>
+          ))}
         </div>
-      ))}
+      )}
     </div>
   );
 }
