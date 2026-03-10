@@ -30,7 +30,7 @@
     "**/*.mts",
     "**/*.ts",
     "**/*.tsx"
-, "app/week-3/item-list.tsx", "app/week-7/item-list.tsx"  ],
+, "app/week-3/item-list.tsx", "app/week-7/item-list.tsx", "app/week-8/_utils/auth-context.tsx"  ],
   "exclude": [
     "node_modules"
   ]
