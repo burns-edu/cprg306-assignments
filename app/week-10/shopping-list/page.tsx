@@ -18,8 +18,13 @@ export default function Page() {
   const router = useRouter();
 
   // Redirect if user CANNOT be authenticated
-  if (!user) {
-  router.push("/week-10");
+  useEffect(() => {
+    if (user === null) {
+      router.push("/week-10"); // ✅ called after render
+    }
+  }, [user, router]);
+  
+  if (user === undefined || user === null) {
   return null;
   }
 
